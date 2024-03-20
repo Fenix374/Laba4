@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ASSASINS_CREEDModelContainer" CdmEntityContainer="ASSASINS_CREEDEntities">
+    <EntitySetMapping Name="CHARACTERS">
+      <EntityTypeMapping TypeName="ASSASINS_CREEDModel.CHARACTERS">
+        <MappingFragment StoreEntitySet="CHARACTERS">
+          <ScalarProperty Name="CHARACTERID" ColumnName="CHARACTERID" />
+          <ScalarProperty Name="NAMEe" ColumnName="NAMEe" />
+          <ScalarProperty Name="GAMEID" ColumnName="GAMEID" />
+          <ScalarProperty Name="DESCRIPTIONn" ColumnName="DESCRIPTIONn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GAMES">
+      <EntityTypeMapping TypeName="ASSASINS_CREEDModel.GAMES">
+        <MappingFragment StoreEntitySet="GAMES">
+          <ScalarProperty Name="GAMEID" ColumnName="GAMEID" />
+          <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+          <ScalarProperty Name="REALESEDATE" ColumnName="REALESEDATE" />
+          <ScalarProperty Name="PLATFORMS" ColumnName="PLATFORMS" />
+          <ScalarProperty Name="RATING" ColumnName="RATING" />
+          <ScalarProperty Name="DESCRIPTIONn" ColumnName="DESCRIPTIONn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

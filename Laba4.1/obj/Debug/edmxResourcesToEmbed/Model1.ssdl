@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ASSASINS_CREEDModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CHARACTERS">
+    <Key>
+      <PropertyRef Name="CHARACTERID" />
+    </Key>
+    <Property Name="CHARACTERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAMEe" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="GAMEID" Type="int" />
+    <Property Name="DESCRIPTIONn" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="GAMES">
+    <Key>
+      <PropertyRef Name="GAMEID" />
+    </Key>
+    <Property Name="GAMEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TITLE" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="REALESEDATE" Type="date" />
+    <Property Name="PLATFORMS" Type="nvarchar" MaxLength="50" />
+    <Property Name="RATING" Type="decimal" Precision="3" Scale="1" />
+    <Property Name="DESCRIPTIONn" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK__CHARACTER__GAMEI__4BAC3F29">
+    <End Role="GAMES" Type="Self.GAMES" Multiplicity="0..1" />
+    <End Role="CHARACTERS" Type="Self.CHARACTERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GAMES">
+        <PropertyRef Name="GAMEID" />
+      </Principal>
+      <Dependent Role="CHARACTERS">
+        <PropertyRef Name="GAMEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GAMEID">
+    <End Role="GAMES" Type="Self.GAMES" Multiplicity="0..1" />
+    <End Role="CHARACTERS" Type="Self.CHARACTERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GAMES">
+        <PropertyRef Name="GAMEID" />
+      </Principal>
+      <Dependent Role="CHARACTERS">
+        <PropertyRef Name="GAMEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ASSASINS_CREEDModelContainer">
+    <EntitySet Name="CHARACTERS" EntityType="Self.CHARACTERS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GAMES" EntityType="Self.GAMES" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CHARACTER__GAMEI__4BAC3F29" Association="Self.FK__CHARACTER__GAMEI__4BAC3F29">
+      <End Role="GAMES" EntitySet="GAMES" />
+      <End Role="CHARACTERS" EntitySet="CHARACTERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GAMEID" Association="Self.FK_GAMEID">
+      <End Role="GAMES" EntitySet="GAMES" />
+      <End Role="CHARACTERS" EntitySet="CHARACTERS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

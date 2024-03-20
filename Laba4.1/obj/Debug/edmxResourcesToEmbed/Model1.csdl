@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ASSASINS_CREEDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CHARACTERS">
+    <Key>
+      <PropertyRef Name="CHARACTERID" />
+    </Key>
+    <Property Name="CHARACTERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAMEe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GAMEID" Type="Int32" />
+    <Property Name="DESCRIPTIONn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="GAMES" Relationship="Self.FK__CHARACTER__GAMEI__4BAC3F29" FromRole="CHARACTERS" ToRole="GAMES" />
+    <NavigationProperty Name="GAMES1" Relationship="Self.FK_GAMEID" FromRole="CHARACTERS" ToRole="GAMES" />
+  </EntityType>
+  <EntityType Name="GAMES">
+    <Key>
+      <PropertyRef Name="GAMEID" />
+    </Key>
+    <Property Name="GAMEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="REALESEDATE" Type="DateTime" Precision="0" />
+    <Property Name="PLATFORMS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RATING" Type="Decimal" Precision="3" Scale="1" />
+    <Property Name="DESCRIPTIONn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CHARACTERS" Relationship="Self.FK__CHARACTER__GAMEI__4BAC3F29" FromRole="GAMES" ToRole="CHARACTERS" />
+    <NavigationProperty Name="CHARACTERS1" Relationship="Self.FK_GAMEID" FromRole="GAMES" ToRole="CHARACTERS" />
+  </EntityType>
+  <Association Name="FK__CHARACTER__GAMEI__4BAC3F29">
+    <End Role="GAMES" Type="Self.GAMES" Multiplicity="0..1" />
+    <End Role="CHARACTERS" Type="Self.CHARACTERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GAMES">
+        <PropertyRef Name="GAMEID" />
+      </Principal>
+      <Dependent Role="CHARACTERS">
+        <PropertyRef Name="GAMEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GAMEID">
+    <End Role="GAMES" Type="Self.GAMES" Multiplicity="0..1" />
+    <End Role="CHARACTERS" Type="Self.CHARACTERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GAMES">
+        <PropertyRef Name="GAMEID" />
+      </Principal>
+      <Dependent Role="CHARACTERS">
+        <PropertyRef Name="GAMEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ASSASINS_CREEDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CHARACTERS" EntityType="Self.CHARACTERS" />
+    <EntitySet Name="GAMES" EntityType="Self.GAMES" />
+    <AssociationSet Name="FK__CHARACTER__GAMEI__4BAC3F29" Association="Self.FK__CHARACTER__GAMEI__4BAC3F29">
+      <End Role="GAMES" EntitySet="GAMES" />
+      <End Role="CHARACTERS" EntitySet="CHARACTERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GAMEID" Association="Self.FK_GAMEID">
+      <End Role="GAMES" EntitySet="GAMES" />
+      <End Role="CHARACTERS" EntitySet="CHARACTERS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
